@@ -1,0 +1,36 @@
+package com.zainab.customerapi.Entity;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.UUID;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "customers")
+public class CustomerEntity {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "id", unique = true, updatable = false)
+    private long id;
+    private String first_name;
+    private String last_name;
+    private String email;
+    private String phone;
+    private String address;
+    private Date birth_date;
+    private Timestamp registeredOn;
+}
