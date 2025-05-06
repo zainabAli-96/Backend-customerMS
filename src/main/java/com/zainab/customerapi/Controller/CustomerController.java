@@ -38,32 +38,15 @@ public class CustomerController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<CustomerEntity> updateCustomer(@PathVariable Long id, @RequestBody CustomerEntity customerData) {
         CustomerEntity updatedCustomer = customerService.updateCustomer(id, customerData);
         return ResponseEntity.ok(updatedCustomer);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> deleteCustomer(@PathVariable Long id) {
-        Map<String, Object> response = new HashMap<>();
-
-        try {
-            boolean deleted = customerService.deleteCustomer(id);
-
-            if (deleted) {
-                response.put("success", true);
-                response.put("message", "Customer deleted successfully");
-                return ResponseEntity.ok(response);
-            } else {
-                response.put("success", false);
-                response.put("message", "Customer not found");
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-            }
-        } catch (Exception e) {
-            response.put("success", false);
-            response.put("message", "Failed to delete customer: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
+    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
+        return ResponseEntity.noContent().build();
     }
 }
