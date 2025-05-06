@@ -33,13 +33,9 @@ public class AuthController {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
             if (passwordEncoder.matches(password, userDetails.getPassword())) {
-                // Create authentication token
                 Authentication authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
-
-                // Set authentication in security context
                 SecurityContextHolder.getContext().setAuthentication(authentication);
-
                 Map<String, Object> response = new HashMap<>();
                 response.put("success", true);
                 response.put("message", "Login successful");

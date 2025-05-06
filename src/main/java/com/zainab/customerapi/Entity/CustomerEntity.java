@@ -1,19 +1,15 @@
 package com.zainab.customerapi.Entity;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.UUID;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 
 @Entity
 @Getter
