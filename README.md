@@ -13,7 +13,7 @@ This is the backend API for the Customer Management System, built with Spring Bo
 
 1. Clone the repository 
    ```
-   https://github.com/zainabAli-96/Backend-customerMS.git
+  git clone https://github.com/zainabAli-96/Backend-customerMS.git
    ```
 
 2. Install dependencies
